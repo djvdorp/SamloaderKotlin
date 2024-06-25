@@ -11,6 +11,9 @@ pluginManagement {
         maven("https://maven.hq.hydraulic.software")
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -30,3 +33,4 @@ rootProject.name = "SamloaderKotlin"
 include(":android")
 include(":desktop")
 include(":common")
+include("cli")
