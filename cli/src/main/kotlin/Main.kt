@@ -28,22 +28,19 @@ fun main() {
     }
 }
 
-fun getLatestVersionInfo(model: String, region: String): String {
-    runBlocking {
-        val (fw, os, error, output) = VersionFetch.getLatestVersion(
-            model = model,
-            region = region,
-        )
+suspend fun getLatestVersionInfo(model: String, region: String): String {
+    val (fw, os, error, output) = VersionFetch.getLatestVersion(
+        model = model,
+        region = region,
+    )
 
-        if (error == null) {
-            //println(output.replace("\t", "  "))
-            println(fw)
-            //println(os)
-            return@runBlocking fw
-        } else {
-            println(error.message.toString())
-            return@runBlocking ""
-        }
+    if (error == null) {
+        //println(output.replace("\t", "  "))
+        println(fw)
+        //println(os)
+        return fw
+    } else {
+        println(error.message.toString())
+        return ""
     }
-    return ""
 }
